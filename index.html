@@ -9,42 +9,34 @@
   </head>
 
   <body>
-    <header class="nav"><a href="#highscores">View Highscores</a></header>
+    <header>
+      <a href="./highscores.html">View Highscores</a>
+      <p>Timer: <span id="timer">75</span></p>
+    </header>
+    
+    <main class="section">
 
-    <section>
-      <div id="start">
-        <h1>Welcome to the Coding Quiz Challenge</h1>
+      <div id="start" class="intro">
+        <h1>Coding Quiz Challenge</h1>
+        <p>
+          Welcome to the coding quiz challenge. The following will be a short
+          quiz using multiple choice answers. Be mindful of the timer. Thanks
+          for playing!
+        </p>
+        <button id="startBtn">start</button>
       </div>
 
-      <div id="questions"></div>
-      <h2>insert question here</h2>
-      <button data-answer="answer1">blue</button>
-      <button>orange</button>
-
-      <div id="highscores"></div>
-
-      <script>
-
-        var foods = [
-          {
-              Name: "orange",
-              color: ["blue, "orange"]
-              correct: "orange"
-          }
-        ];
-
-        var template = `
-        <h2>insert question here${}</h2>
-        <button data-answer="answer1">blue</button>
-        <button>orange</button>
-        `
-      </script>
-
-      <div>
-        <a href="./highscores.html"> View Highscores</a>
-        <div>Timer: <span id="tmer">0</span></div>
+      <div id="questions" class="questionContainer hide">
+        <h2 id="Q">This is the first question?</h2>
+        <button id="btn1" data-answer="answer1">answer1</button>
+        <button id="btn2" data-answer="answer2">answer2</button>
+        <button id="btn3" data-answer="answer3">answer3</button>
+        <button id="btn4" data-answer="answer4">answer4</button>
       </div>
-    </section>
+    </main>
+
+    <script src="./game.js"></script>
+
     <footer>Holgate Productions © 2022</footer>
   </body>
 </html>
