@@ -1,0 +1,94 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+  
+  body {
+    background-color: darkgrey;
+  }
+  
+  a {
+    color: aliceblue;
+    text-decoration: none;
+  }
+  
+  p {
+    /* font-size: 16px;
+    margin: 15px; */
+  }
+  
+  header {
+    background-color: black;
+    font-family: "Courier New", Courier, monospace;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 10%;
+    height: 60px;
+    border-bottom: 3px solid #73ad21;
+  }
+
+  header h1 {
+    justify-content: left;
+    color: aliceblue;
+  }
+  
+  header nav {
+    font-size: 24px;
+    color: aliceblue;
+    padding: 15px;
+  }
+  
+  header nav a:hover {
+    color: rgb(229, 22, 22);
+    font-weight: 500;
+    font-size: larger;
+  }
+
+  .section {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: rgb(52, 47, 47);
+    border-radius: 25px;
+    border: 3px solid #73ad21;
+    padding: 30px;
+    margin: 25px;
+    color: aliceblue;
+    align-items: right;
+    justify-content: space-between;
+  }
+  
+  .section h2 {
+    flex: 0 0 20%;
+    font-size: 24px;
+    padding-right: 20px;
+    text-align: right;
+    line-height: 1;
+  }
+  
+  .section div {
+    flex: 0 0 77%;
+  }
+  
+  .section div p {
+    margin-bottom: 20px;
+  }
+
+  footer {
+    background-color: black;
+    color: aliceblue;
+    text-align: center;
+    padding: 15px;
+    position:relative;
+    bottom:0;
+    width:100%;
+    font-family: 'Courier New', Courier, monospace;
+    border-top: 3px solid #73AD21;
+  }
+  
+  @media screen and (max-width: 768px) {
+      main,
+      nav, {
+        flex-direction: column;
+      }
