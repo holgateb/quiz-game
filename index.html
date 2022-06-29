@@ -34,10 +34,11 @@
         <button id="btn4" data-answer="answer4">answer4</button>
       </div>
 
-      <div id="highscores hide">
+      <div id="highscores" class="highscores hide">
         <h3>All Done!</h3>
-        <p>Your final score is ${yourScore}</p>
-        <p>Enter your initials <textarea name="" id="" cols="30" rows="10"></textarea></p>
+        <p>Your final score is: <span #your-score>${score}</span></p>
+        <p>Enter your initials: <input type="text"></p>
+        <button id="recordScoreBtn">Submit Score</button>
       </div>
     </main>
 

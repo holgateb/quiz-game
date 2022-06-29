@@ -7,6 +7,7 @@ var btn1 = document.querySelector('#btn1')
 var btn2 = document.querySelector('#btn2')
 var btn3 = document.querySelector('#btn3')
 var btn4 = document.querySelector('#btn4')
+var recordScoreBtn = document.querySelector('#recordScoreBtn')
 var time = 75;
 var qPointer = 0
 
@@ -45,6 +46,7 @@ function startGame(){
     start.classList.add("hide");
     //show questions
     questions.classList.remove("hide");
+    //
     //start timer
     var timerInterval = setInterval(function() {
         time--;
@@ -102,7 +104,23 @@ function endGame(){
 //function recordScore
 function recordScore(){
 
+    recordScoreBtn.addEventListener("click", function(event) {
+        event.preventDefault();
+      
+        var name = document.querySelector("#name").value;
+        var score = document.querySelector("#score").value;
+      
+        if (name === "") {
+          displayMessage("error", "Initials cannot be blank");
+        }  else {
+          displayMessage("Score Recorded");
+      
+          localStorage.setItem("Name", name);
+          localStorage.setItem("Score", score);
+          renderLastRegistered();
+        }
+      });
 }
 
 startBtn.addEventListener("click", startGame);
-endBtn.addEventListener("click", recordScore)
+recordScoreBtn.addEventListener("click", recordScore)
