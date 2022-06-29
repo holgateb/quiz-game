@@ -7,11 +7,36 @@ var btn1 = document.querySelector('#btn1')
 var btn2 = document.querySelector('#btn2')
 var btn3 = document.querySelector('#btn3')
 var btn4 = document.querySelector('#btn4')
-
-
-var currentQuestion = 0
-var questionsArray = []
 var time = 75;
+var qPointer = 0
+
+var questionsArray = [
+    {
+    question: "What is the element called that forms a search pattern out of a sequence of characters?",
+    answers: ["RegExp or Regular Expression", "Event", "Boolean Variable", "Conditional Argument"],
+    correct: "RegExp or Regular Expression",
+    }
+    {
+    question: "JavaScript does NOT have this function built-in, which is commonly used to print or display data in other languages.",
+    answers: ["Show", "Display", "Speak", "Output"],
+    correct: "Output",
+    }
+    {
+    question: "What is the default behavior called that is used to move declarations to the top of the current scope?",
+    answers: ["Jumping", "Arranging", "Hoisting", "Sorting"],
+    correct: "Hoisting",
+    }
+    {
+    question: "What is the element used – and hidden – in code that explains things and makes the content more readable?",
+    answers: ["Comments", "Notes", "Quotations", "Comparisons"],
+    correct: "Comments",
+    }    
+    { 
+    question: "In JavaScript, what is used in conjunction with HTML to “react” to certain elements?",
+    answers: ["Events", "RegExp", "Boolean", "Condition"],
+    correct: "Events",
+    }
+   ];
 
 //Function 'startgame'
 
@@ -29,7 +54,9 @@ function startGame(){
           // Stops execution of action at set interval
           clearInterval(timerInterval);
           // Calls function to create and append image
-          sendMessage();
+          sendMessage("Time is Up");
+
+          endGame();
         }
     
       }, 1000);
@@ -40,14 +67,36 @@ displayCurrentQuestion();
 //function 'displayCurrentQuestion'
 
 function displayCurrentQuestion (){
-
+    var currentQuestion = questionsArray[qPointer]
 }
 
 //function 'answerquestion'
 
-function endGame(){
+function answerQuestion(){
+    //check if answer is correct
+    if(answers === correct);
+        time++;
+        //IF the answer is wrong
+    else(answers != correct);
+        //THEN subtract time from countdown
+        time--;
+    //currentQuestion++
+    currentQuestion++;
+
+    //IF passed last question
+    if(qPointer >= 5)
+        //THEN endGame();
+        endGame();
+    //ELSE displayCurrentQuestion();
+    else(displayCurrentQuestion);
     
 }
+
+function endGame(){
+        
+}
+
+
 
 //function recordScore
 
