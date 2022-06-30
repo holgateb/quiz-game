@@ -10,33 +10,34 @@ var btn4 = document.querySelector('#btn4')
 var recordScoreBtn = document.querySelector('#recordScoreBtn')
 var time = 75;
 var qPointer = 0
+var timerInterval;
 
 var questionsArray = [
     {
     question: "What is the element called that forms a search pattern out of a sequence of characters?",
     answers: ["RegExp or Regular Expression", "Event", "Boolean Variable", "Conditional Argument"],
     correct: "RegExp or Regular Expression",
-    }
+    },
     {
     question: "JavaScript does NOT have this function built-in, which is commonly used to print or display data in other languages.",
     answers: ["Show", "Display", "Speak", "Output"],
     correct: "Output",
-    }
+    },
     {
     question: "What is the default behavior called that is used to move declarations to the top of the current scope?",
     answers: ["Jumping", "Arranging", "Hoisting", "Sorting"],
     correct: "Hoisting",
-    }
+    },
     {
-    question: "What is the element used – and hidden – in code that explains things and makes the content more readable?",
+    question: "What is the element used, and hidden, in code that explains things and makes the content more readable?",
     answers: ["Comments", "Notes", "Quotations", "Comparisons"],
     correct: "Comments",
-    }    
+    },   
     { 
     question: "In JavaScript, what is used in conjunction with HTML to “react” to certain elements?",
     answers: ["Events", "RegExp", "Boolean", "Condition"],
     correct: "Events",
-    }
+    },
    ];
 
 //Function 'startgame'
@@ -48,17 +49,13 @@ function startGame(){
     questions.classList.remove("hide");
     //
     //start timer
-    var timerInterval = setInterval(function() {
+     timerInterval = setInterval(function() {
         time--;
         timeEl.textContent = time;
     
         if(time === 0) {
-          // Stops execution of action at set interval
-          clearInterval(timerInterval);
-          // Calls function to create and append image
-          sendMessage("Time is Up");
-
-          endGame();
+        
+             endGame();
         }
     
       }, 1000);
@@ -68,30 +65,38 @@ displayCurrentQuestion();
 
 //function 'displayCurrentQuestion'
 
-function displayCurrentQuestion (){
-    var currentQuestion = questionsArray[qPointer]
+function displayCurrentQuestion() {
+    var currentQuestion = questionsArray[qPointer];
+  Q.textContent = currentQuestion.question
+
+  btn1.textContent = currentQuestion.answers[0]
+  btn1.setAttribute('value', currentQuestion.answers[0])
+  btn2.textContent = currentQuestion.answers[1]
+  btn2.setAttribute('value', currentQuestion.answers[1])
+  btn3.textContent = currentQuestion.answers[2]
+  btn3.setAttribute('value', currentQuestion.answers[2])
+  btn4.textContent = currentQuestion.answers[3]
+  btn4.setAttribute('value', currentQuestion.answers[3])
 }
 
-//function 'answerquestion'
-
-function answerQuestion(){
-    //check if answer is correct
-    if(answers === correct);
-        time++;
-        //IF the answer is wrong
-    else(answers != correct);
-        //THEN subtract time from countdown
-        time--;
-    //currentQuestion++
-    currentQuestion++;
-
-    //IF passed last question
-    if(qPointer >= 5)
-        //THEN endGame();
-        endGame();
-    //ELSE displayCurrentQuestion();
-    else(displayCurrentQuestion);
+function answerQuestion(event){
     
+    // console.log(event.target.value)
+    // check if the event.target.value is the wrong answer
+    if(questionsArray[qPointer].correct !== event.target.value){
+        // if the answer is wrong subtract 3 from the time
+        time -= 3 
+        timeEl.textContent = time;
+    }
+    //move on to the next question
+
+    qPointer++;
+
+    if(qPointer === questionsArray.length){
+        endGame()
+    }else{
+        displayCurrentQuestion();
+    }
 }
 
 function endGame(){
@@ -99,21 +104,28 @@ function endGame(){
     questions.classList.add("hide");
     //show highscore
     highscores.classList.remove("hide");
+    //calculate score?
+
+      // Stops execution of action at set interval
+      clearInterval(timerInterval);
     }
 
 //function recordScore
 function recordScore(){
-
+ 
     recordScoreBtn.addEventListener("click", function(event) {
         event.preventDefault();
       
         var name = document.querySelector("#name").value;
-        var score = document.querySelector("#score").value;
+        var score = time;
+        console.log()
       
         if (name === "") {
           displayMessage("error", "Initials cannot be blank");
         }  else {
           displayMessage("Score Recorded");
+
+          //record score into array
       
           localStorage.setItem("Name", name);
           localStorage.setItem("Score", score);
@@ -123,4 +135,7 @@ function recordScore(){
 }
 
 startBtn.addEventListener("click", startGame);
-recordScoreBtn.addEventListener("click", recordScore)
+btn1.addEventListener("click", answerQuestion);
+btn2.addEventListener("click", answerQuestion);
+btn3.addEventListener("click", answerQuestion);
+btn4.addEventListener("click", answerQuestion);

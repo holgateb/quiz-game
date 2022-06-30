@@ -20,5 +20,3 @@ function renderLastRegistered() {
   userNameSpan.textContent = name;
   userScoredSpan.textContent = score;
 }
-
-
