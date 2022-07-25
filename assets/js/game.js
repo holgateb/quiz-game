@@ -8,6 +8,7 @@ var btn2 = document.querySelector('#btn2')
 var btn3 = document.querySelector('#btn3')
 var btn4 = document.querySelector('#btn4')
 var recordScoreBtn = document.querySelector('#recordScoreBtn')
+var displayEl = document.querySelector('#displayText')
 var time = 75;
 var qPointer = 0
 var timerInterval;
@@ -93,7 +94,7 @@ function answerQuestion(event){
     qPointer++;
 
     if(qPointer === questionsArray.length){
-        endGame()
+        endGame();
     }else{
         displayCurrentQuestion();
     }
@@ -104,7 +105,6 @@ function endGame(){
     questions.classList.add("hide");
     //show highscore
     highscores.classList.remove("hide");
-    //calculate score?
 
       // Stops execution of action at set interval
       clearInterval(timerInterval);
@@ -120,10 +120,12 @@ function recordScore(){
         var score = time;
         console.log()
       
+
+        //fix this
         if (name === "") {
-          displayMessage("error", "Initials cannot be blank");
+          alert("error", "Initials cannot be blank");
         }  else {
-          displayMessage("Score Recorded");
+          alert("Score Recorded");
 
           //record score into array
       
@@ -139,3 +141,4 @@ btn1.addEventListener("click", answerQuestion);
 btn2.addEventListener("click", answerQuestion);
 btn3.addEventListener("click", answerQuestion);
 btn4.addEventListener("click", answerQuestion);
+recordScoreBtn.addEventListener("click", recordScore)
